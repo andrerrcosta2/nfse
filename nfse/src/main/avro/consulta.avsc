@@ -1,0 +1,26 @@
+{
+  "namespace": "com.nobblecrafts.nfse.infrastructure.kafka.model.avro",
+  "type": "record",
+  "name": "ConsultaCreditoAvroModel",
+  "fields": [
+    {
+      "name": "tipoConsulta",
+      "type": {
+        "type": "enum",
+        "name": "AvroTipoConsulta",
+        "symbols": ["NFSE", "CREDITO"]
+      }
+    },
+    {
+      "name": "identificador",
+      "type": "string"
+    },
+    {
+      "name": "timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}

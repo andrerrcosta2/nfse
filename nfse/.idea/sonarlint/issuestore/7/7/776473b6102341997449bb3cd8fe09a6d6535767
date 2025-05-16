@@ -1,0 +1,27 @@
+
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Óé³Ë
+t
+java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(ù±ö™úÿÿÿÿ
+o
+java:S22938"YReplace the type specification in this constructor call with the diamond operator ("<>").(Öñ»Ä
+f	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ûùõú
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®•’ûÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®•’ûÿÿÿÿ
+A
+java:S2160"+Override the "equals" method in this class.(ŠõÅ…
+P
+java:S1161f":Add the "@Override" annotation above this method signature(Òâíø
+G
+java:S2160ã"+Override the "equals" method in this class.(í—®’ùÿÿÿÿ
+Q
+java:S6213’":Rename this variable to not match a restricted identifier.(ù±“­
+E
+java:S1905¡".Remove this unnecessary cast to "DatumWriter".(æ²Ğö
+E
+java:S1905ª".Remove this unnecessary cast to "DatumReader".(óõ´ÿ
+^
+java:S1128"ARemove this unused import 'org.apache.avro.generic.GenericArray'.(é¥œÿ8üÕ›Ûì2
+S
+java:S1128
+"6Remove this unused import 'org.apache.avro.util.Utf8'.(•®˜Õ8üÕ›Ûì2

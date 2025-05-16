@@ -1,0 +1,1 @@
+## Spring-boot + Kafka + Angular 19 integration tests.

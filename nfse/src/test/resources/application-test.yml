@@ -1,0 +1,44 @@
+spring:
+  kafka:
+    bootstrap-servers: ${spring.embedded.kafka.brokers}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+    properties:
+      schema.registry.url: mock://localhost
+      retries: 5                    # number of retries
+      retry.backoff.ms: 100        # delay between retries (.1s)
+      metadata.max.age.ms: 1000       # force metadata refresh every second
+      max.block.ms: 5000              # total wait time for send before giving up (defaults to 60_000 ms!)
+      request.timeout.ms: 3000
+      delivery.timeout.ms: 3000
+  test:
+    kafka:
+      brokers: localhost:9092
+      topics:
+        - test-topic
+  logging:
+    level:
+      org.hibernate.SQL: DEBUG
+      org.apache.kafka: DEBUG
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;
+    username: sa
+    hikari:
+      auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: false
+    open-in-view: false
+    packages-to-scan: com.nobblecrafts.nfse.dataaccess
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format-sql: true
+        show-sql: true
+        connection:
+          provider_disables_autocommit: true

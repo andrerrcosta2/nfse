@@ -1,0 +1,50 @@
+# OS files
+.DS_Store
+Thumbs.db
+nfse/.DS_Store
+nfse/Thumbs.db
+nfse-frontend/.DS_Store
+nfse-frontend/Thumbs.db
+
+# Backend
+nfse/target/
+!nfse/.mvn/wrapper/maven-wrapper.jar
+!nfse/**/src/main/**/target/
+!nfse/**/src/test/**/target/
+
+### IntelliJ IDEA ###
+nfse/.idea/modules.xml
+nfse/.idea/jarRepositories.xml
+nfse/.idea/compiler.xml
+nfse/.idea/libraries/
+nfse/*.iws
+nfse/*.iml
+nfse/*.ipr
+
+### VS Code ###
+nfse/.vscode/
+
+
+# Frontend
+# Angular build output
+nfse-frontend/dist/
+nfse-frontend/.angular/
+
+# Node modules
+nfse-frontend/node_modules/
+
+# IDEs and editors
+nfse-frontend/.vscode/
+nfse-frontend/.idea/
+
+# Logs
+nfse-frontend/npm-debug.log*
+nfse-frontend/yarn-debug.log*
+nfse-frontend/yarn-error.log*
+
+# Compiled output
+nfse-frontend/tmp/
+nfse-frontend/out-tsc/
+
+# Environment files (if any)
+nfse-frontend/src/environments/environment*.ts
