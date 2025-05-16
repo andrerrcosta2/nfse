@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="box">
+    <h1>Consulta de Crédito</h1>
+  </div>
+  <div class="box">
+    <div class="inner-box">
+      <mat-form-field appearance="outline" class="shrink">
+        <mat-label>Buscar por</mat-label>
+        <mat-select [(ngModel)]="searchType">
+          <mat-option value="numeroNfse">NFS-e</mat-option>
+          <mat-option value="numeroCredito">Crédito</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Número</mat-label>
+        <input matInput type="number" [(ngModel)]="searchValue" />
+      </mat-form-field>
+    </div>
+
+    <div class="inner-box">
+      <button mat-raised-button color="primary" (click)="consultar()">Consultar</button>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <app-consulta-table [resultados]="resultados"></app-consulta-table>
+  </div>
+</div>

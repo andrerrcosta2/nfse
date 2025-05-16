@@ -1,0 +1,21 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 32px 0;
+}
+
+.inner-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-flow: wrap;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+}

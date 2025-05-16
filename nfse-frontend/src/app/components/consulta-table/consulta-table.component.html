@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="resultados" class="mat-elevation-z8" *ngIf="resultados.length > 0">
+
+  <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+    <th mat-header-cell *matHeaderCellDef> {{ columnLabels[column] || column }} </th>
+
+    <td mat-cell *matCellDef="let element">
+      <ng-container [ngSwitch]="column">
+        <span *ngSwitchCase="'dataConstituicao'">
+          {{ element[column] | date: 'dd/MM/yyyy' }}
+        </span>
+        <span *ngSwitchCase="'valorIssqn'">
+          {{ element[column] | currency:'BRL':'symbol':'1.2-2' }}
+        </span>
+        <span *ngSwitchCase="'valorFaturado'">
+          {{ element[column] | currency:'BRL':'symbol':'1.2-2' }}
+        </span>
+        <span *ngSwitchCase="'valorDeducao'">
+          {{ element[column] | currency:'BRL':'symbol':'1.2-2' }}
+        </span>
+        <span *ngSwitchCase="'baseCalculo'">
+          {{ element[column] | currency:'BRL':'symbol':'1.2-2' }}
+        </span>
+        <span *ngSwitchDefault>
+          {{ element[column] }}
+        </span>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<p *ngIf="resultados.length === 0">Nenhum resultado encontrado.</p>
