@@ -19,6 +19,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
+        default_schema: credito
         dialect: org.hibernate.dialect.PostgreSQLDialect
         connection:
           provider_disables_autocommit: true
@@ -32,9 +33,9 @@ spring:
       auto-commit: false
 
 kafka-config:
-  bootstrap-servers: kafka:29092
+  bootstrap-servers: host.docker.internal:29092
   schema-registry-url-key: schema.registry.url
-  schema-registry-url: http://schema-registry:8081
+  schema-registry-url: http://localhost:8081
   num-of-partitions: 1
   replication-factor: 1
 
@@ -46,5 +47,8 @@ kafka-producer-config:
   batch-size: 16384
   batch-size-boost-factor: 100
   linger-ms: 5
-  request-timeout-ms: 60000
+  request-timeout-ms: 10000
+  max-block-ms: 10000
+  metadata-max-age-ms: 3000
   retry-count: 5
+  retry-backoff-ms: 100

@@ -17,4 +17,7 @@ public class KafkaProducerConfigData {
     private Integer lingerMs;
     private Integer requestTimeoutMs;
     private Integer retryCount;
+    private Integer retryBackoffMs;
+    private Integer maxBlockMs;
+    private Integer metadataMaxAgeMs;
 }

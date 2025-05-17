@@ -1,3 +1,7 @@
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.apache.kafka: DEBUG
 spring:
   kafka:
     bootstrap-servers: ${spring.embedded.kafka.brokers}
@@ -17,10 +21,6 @@ spring:
       brokers: localhost:9092
       topics:
         - test-topic
-  logging:
-    level:
-      org.hibernate.SQL: DEBUG
-      org.apache.kafka: DEBUG
   datasource:
     driverClassName: org.h2.Driver
     password: ''
