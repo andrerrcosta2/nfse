@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 import { Credito } from '../interfaces/credito.interface';
+import { environment } from '../../environments/environment-prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConsultaCreditoService {
-  private apiUrl = 'http://localhost:8080/api/creditos';
+  private apiUrl = `${environment.apiBaseUrl}`;
 
   constructor(private http: HttpClient) {}
 
