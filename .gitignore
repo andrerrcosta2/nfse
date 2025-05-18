@@ -45,6 +45,3 @@ nfse-frontend/yarn-error.log*
 # Compiled output
 nfse-frontend/tmp/
 nfse-frontend/out-tsc/
-
-# Environment files (if any)
-nfse-frontend/src/environments/environment*.ts
