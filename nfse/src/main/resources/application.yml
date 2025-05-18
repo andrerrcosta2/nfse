@@ -19,12 +19,12 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
-        default_schema: credito
+        default_schema: nfse_app
         dialect: org.hibernate.dialect.PostgreSQLDialect
         connection:
           provider_disables_autocommit: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=credito&binaryTransfer=true&reWriteBatchedInserts=true
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=nfse_app
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver

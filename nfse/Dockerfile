@@ -1,10 +1,17 @@
-FROM eclipse-temurin:17-jdk-alpine as build
+# Build
+FROM maven:3.9.5-eclipse-temurin-17 AS build
 WORKDIR /app
-COPY . .
-RUN ./mvnw clean package -DskipTests
 
-FROM eclipse-temurin:17-jdk-alpine
+COPY pom.xml .
+RUN --mount=type=cache,target=/root/.m2 \
+    mvn dependency:go-offline
+
+COPY src ./src
+RUN --mount=type=cache,target=/root/.m2 \
+    mvn clean package -DskipTests
+
+# Run
+FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
-COPY --from=build /app/target/nfse-1.0-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java", "-jar"]
-CMD ["app.jar"]
+COPY --from=build /app/target/nfse-service.jar nfse-service.jar
+ENTRYPOINT ["java", "-jar", "nfse-service.jar"]

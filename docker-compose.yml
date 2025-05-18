@@ -8,6 +8,8 @@ services:
       - "2181:2181"
     networks:
       - infra-network
+    volumes:
+      - zkdata:/bitnami/zookeeper
 
   kafka:
     image: confluentinc/cp-kafka:7.0.1
@@ -24,6 +26,8 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - infra-network
+    volumes:
+      - kafkadata:/bitnami/kafka
 
   schema-registry:
     image: confluentinc/cp-schema-registry:7.0.1
@@ -56,10 +60,10 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: postgres
+      POSTGRES_DB: nfse_app
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init-schema.sql:/docker-entrypoint-initdb.d/init-schema.sql
+      - ./nfse/init:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
     networks:
@@ -68,8 +72,11 @@ services:
   nfse-api:
     image: andrerrcosta2/nfse-api:latest
     build:
-      context: .
+      context: ./nfse
       dockerfile: Dockerfile
+      # Enable BuildKit via build args
+      args:
+        BUILDKIT_INLINE_CACHE: 1
     depends_on:
       - postgres
       - kafka
@@ -77,19 +84,40 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=credito
+      SPRING_CONFIG_LOCATION: classpath:/,file:/config/
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/nfse_app?currentSchema=nfse_app
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin
       SPRING_JPA_HIBERNATE_DDL_AUTO: none
-      SPRING_SQL_INIT_MODE: always
       KAFKA_CONFIG_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_CONFIG_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       KAFKA_PRODUCER_CONFIG_KEY_SERIALIZER_CLASS: org.apache.kafka.common.serialization.StringSerializer
       KAFKA_PRODUCER_CONFIG_VALUE_SERIALIZER_CLASS: io.confluent.kafka.serializers.KafkaAvroSerializer
     networks:
       - infra-network
+    volumes:
+      - ./src/main/resources:/config
+
+  nfse-frontend:
+    image: nfse-frontend:latest
+    build:
+      context: ./nfse-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - infra-network
 
 volumes:
+  maven-repo:
+    name: nfse_m2_repo
   postgres_data:
+    name: nfse_postgres_data
+  zkdata:
+    name: nfse_zookeeper_data
+  kafkadata:
+    name: nfse_kafka_data
 
 networks:
   infra-network:
