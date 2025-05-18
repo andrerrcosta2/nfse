@@ -4,7 +4,7 @@ This project demonstrates integration between a Spring Boot backend and an Angul
 
 ## How to Run
 
-> Make sure Docker is installed and running.
+> 1. Make sure Docker is installed and running.
 
 - **On Windows:**
 ```bash
@@ -14,6 +14,8 @@ This project demonstrates integration between a Spring Boot backend and an Angul
 ```shell
    docker-compose up -d --build
 ```
+
+> 2. Open your browser and navigate to [http://localhost:4200](http://localhost:4200).
 
 ### Stack and Versions
 - Java	17
