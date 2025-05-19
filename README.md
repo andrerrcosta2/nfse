@@ -1,6 +1,6 @@
 # Spring Boot + Kafka + Angular 19 Integration Tests
 
-This project demonstrates integration between a Spring Boot backend and an Angular 19 frontend using Kafka as the communication layer.
+This project demonstrates integration between a Spring Boot + Kafka backend and an Angular 19 frontend.
 
 ## How to Run
 
