@@ -26,3 +26,6 @@ This project demonstrates integration between a Spring Boot backend and an Angul
 - Node.js	22.15.1
 - npm	11.3.0
 - OS	win32 x64
+- Docker Desktop 4.40.0 (187762)
+- Compose: v2.34.0-desktop.1
+- Engine: 28.0.4
