@@ -10,12 +10,24 @@ This project demonstrates integration between a Spring Boot backend and an Angul
 ```bash
   docker compose up -d --build
 ```
+
+Depending on your docker version you may need to run:
+> (add --no-cache to the build to avoid cached dependencies)
+
+```bash
+docker-compose build
+docker-compose up
+```
+
 - **Linux/macOS**:
 ```shell
    docker-compose up -d --build
 ```
 
 > 2. Open your browser and navigate to [http://localhost:4200](http://localhost:4200).
+
+> 3. In order to see the clusters on kafka-manager you must access [http://localhost:9000](http://localhost:9000) and register it manually.
+- Use the host: 'zookeeper:2181' without quotes
 
 ### Stack and Versions
 - Java	17
